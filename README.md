@@ -1,2 +1,20 @@
-# ADAutoPwn
-What is ADAutoPwn? ADAutoPwn is an envisioned or prototype tool designed to perform fully autonomous Active Directory (AD) penetration testing. The idea is to automate the entire process of discovering, exploiting, and escalating privileges within an AD environment without human intervention, from initial enumeration to domain dominance.
+# ADAutoPwn 
+
+Active Directory penetration testing framework that performs real-world attacks from discovery to domain compromise.
+
+## Features
+- Full AD attack chain execution
+- Interactive menu-driven interface
+- Credential management and reuse
+- Privilege escalation tracking
+- Comprehensive reporting
+
+## Installation
+```bash
+# Clone repository
+git clone https://github.com/yourusername/AD-AutoPwn-Pro.git
+cd ADAutoPwn
+
+# Run setup script (requires sudo)
+sudo chmod +x setup.sh
+sudo ./setup.sh
