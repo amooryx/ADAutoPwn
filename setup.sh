@@ -1,5 +1,5 @@
 #!/bin/bash
-# ADAutoPwn  - Comprehensive Setup Script
+# AD AutoPwn Professional - Comprehensive Setup Script
 # Run with: sudo ./setup.sh
 
 echo "[!] Installing system dependencies..."
