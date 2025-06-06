@@ -1,0 +1,8 @@
+# Python Dependencies
+ldap3==2.9.1
+requests==2.31.0
+pycryptodome==3.20.0
+bloodhound==1.7.1
+impacket==0.12.0
+certipy-ad==4.8.0
+dnspython==2.4.2
