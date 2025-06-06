@@ -1,8 +1,8 @@
 #!/bin/bash
-# AD AutoPwn Professional - Setup Script
+# ADAutoPwn  - Comprehensive Setup Script
 # Run with: sudo ./setup.sh
 
-# System Dependencies
+echo "[!] Installing system dependencies..."
 sudo apt update
 sudo apt install -y \
     nmap \
@@ -12,33 +12,49 @@ sudo apt install -y \
     seclists \
     libsasl2-dev \
     libldap2-dev \
-    libssl-dev
+    libssl-dev \
+    git \
+    wget \
+    unzip \
+    python3-pip \
+    bloodhound \
+    powershell \
+    crackmapexec
 
-# Install Kerbrute
-if ! command -v kerbrute &> /dev/null; then
-    echo "[+] Installing Kerbrute..."
-    wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64
-    chmod +x kerbrute_linux_amd64
-    sudo mv kerbrute_linux_amd64 /usr/local/bin/kerbrute
+echo "[+] Installing Python tools..."
+sudo pip3 install \
+    impacket \
+    bloodhound \
+    certipy-ad \
+    ldap3 \
+    requests \
+    pycryptodome \
+    crackmapexec
+
+echo "[+] Installing Kerbrute..."
+wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64
+chmod +x kerbrute_linux_amd64
+sudo mv kerbrute_linux_amd64 /usr/local/bin/kerbrute
+
+echo "[+] Installing Mimikatz (Linux port)..."
+git clone https://github.com/gentilkiwi/mimikatz
+sudo cp -r mimikatz /opt/
+sudo ln -s /opt/mimikatz/x64/mimikatz /usr/local/bin/mimikatz
+
+echo "[+] Configuring wordlists..."
+sudo gunzip /usr/share/wordlists/rockyou.txt.gz 2>/dev/null || true
+if [ ! -f /usr/share/wordlists/rockyou.txt ]; then
+    sudo wget -O /usr/share/wordlists/rockyou.txt https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
 fi
 
-# Create sample wordlists
-mkdir -p wordlists
-if [ ! -f wordlists/users.txt ]; then
-    echo "administrator" > wordlists/users.txt
-    echo "admin" >> wordlists/users.txt
-    echo "svc_account" >> wordlists/users.txt
-fi
+echo "[+] Setting up PowerShell for Mimikatz..."
+pwsh -Command "Install-Module -Name Mimikatz -Force"
 
-if [ ! -f wordlists/targets.txt ]; then
-    echo "10.0.0.1" > wordlists/targets.txt
-    echo "10.0.0.5" >> wordlists/targets.txt
-    echo "10.0.0.10" >> wordlists/targets.txt
-fi
+echo "[+] Creating pentest directory..."
+mkdir -p ~/ad_pentest
+cp /usr/share/wordlists/rockyou.txt ~/ad_pentest/
 
-# Install Python dependencies
-pip install -r requirements.txt
-
-echo "[+] Setup completed successfully!"
-echo "[!] Remember to add your target IPs to wordlists/targets.txt"
-echo "[!] Add domain users to wordlists/users.txt"
+echo "[!] Setup completed successfully!"
+echo "  - Installed: Impacket, BloodHound, Certipy, Kerbrute, Mimikatz"
+echo "  - Wordlists: rockyou.txt in ~/ad_pentest"
+echo "  - Run: python3 ad_autopwn_pro.py to start"
