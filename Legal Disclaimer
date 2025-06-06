@@ -1,0 +1,13 @@
+
+### Key Notes for GitHub
+1. **Legal Disclaimer**: Include a clear disclaimer about authorized use only
+2. **License**: Add an appropriate license (e.g., MIT License)
+3. **Sample Files**: Include basic wordlists for immediate testing
+4. **Versioning**: Tag releases for stability
+5. **Issue Template**: Create GitHub issue templates for bug reports
+
+### Post-Installation Steps
+1. Edit wordlists:
+   ```bash
+   nano wordlists/users.txt    # Add target usernames
+   nano wordlists/targets.txt  # Add target IPs
