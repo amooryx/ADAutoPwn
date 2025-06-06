@@ -12,7 +12,7 @@ Active Directory penetration testing framework that performs real-world attacks 
 ## Installation
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/AD-AutoPwn-Pro.git
+git clone https://github.com/yourusername/ADAutoPwn.git
 cd ADAutoPwn
 
 # Run setup script (requires sudo)
