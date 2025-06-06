@@ -1,5 +1,5 @@
 AD-AutoPwn-Pro/
-├── ad_autopwn_pro.py       # Main tool
+├── adautopwn.py       # Main tool
 ├── requirements.txt         # Python dependencies
 ├── setup.sh                 # Installation script
 ├── wordlists/
