@@ -57,4 +57,4 @@ cp /usr/share/wordlists/rockyou.txt ~/ad_pentest/
 echo "[!] Setup completed successfully!"
 echo "  - Installed: Impacket, BloodHound, Certipy, Kerbrute, Mimikatz"
 echo "  - Wordlists: rockyou.txt in ~/ad_pentest"
-echo "  - Run: python3 ad_autopwn_pro.py to start"
+echo "  - Run: python3 adautopwn.py to start"
